@@ -38,5 +38,5 @@
           echo "${{ secrets.SSH_KEY }}" > mykey.pem
           chmod 600 mykey.pem
           cat mykey.pem
-          # ssh -i ssh.key -o StrictHostKeyChecking=no -i my-key ubuntu@13.49.41.50
+    
         
