@@ -38,8 +38,7 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > mykey.pem
           chmod 600 mykey.pem
           cat mykey.pem 
-          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.60.41.184 "docker pull 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}"
-          # ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.60.41.184 "docker rm -f mediplux"
+          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.60.41.184 "docker pull 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}" 
           ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.60.41.184 "docker run -d --name mediplux -p 80:80 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}"
     
         
