@@ -36,8 +36,8 @@
     steps:
       - name: Check my ssh.key
         run: |
-          echo "${{ secrets.SSH_KEY }}" > my-key.pem
-          chmod 600 my-key.pem
-          cat my-key.pem
+          echo "${{ secrets.SSH_KEY }}" > mykey.pem
+          chmod 600 mykey.pem
+          cat mykey.pem
           # ssh -i ssh.key -o StrictHostKeyChecking=no -i my-key ubuntu@13.49.41.50
         
