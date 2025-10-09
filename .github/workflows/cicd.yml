@@ -40,6 +40,6 @@ jobs:
           cat mykey.pem 
           ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@16.16.146.16 "docker pull 814724283180.dkr.ecr.eu-north-1.amazonaws.com/pod14:${{github.run_number}}" 
           # ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@16.16.146.16 "docker rm -f mediplux"
-          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@16.16.146.16 "docker run -d --name pod14 -p 80:80 814724283180.dkr.ecr.eu-north-1.amazonaws.com/pod14:${{github.run_number}}"
+          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@16.16.146.16 "docker run -d --name mypod14 -p 80:80 814724283180.dkr.ecr.eu-north-1.amazonaws.com/pod14:${{github.run_number}}"
     
         
