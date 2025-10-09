@@ -29,17 +29,17 @@ jobs:
 #           docker tag mediplus:${{github.run_number}} 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}
 #           docker push 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build-push
-    steps:
-      - name: Check my ssh key
-        run: |
-          echo "${{ secrets.SSH_KEY }}" > mykey.pem
-          chmod 600 mykey.pem
-          cat mykey.pem 
-          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.49.41.50 "docker pull 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}"
-          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.49.41.50 "docker rm -f mediplus"
-          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.49.41.50 "docker run -d -p 80:80 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}"
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: build-push
+  #   steps:
+  #     - name: Check my ssh key
+  #       run: |
+  #         echo "${{ secrets.SSH_KEY }}" > mykey.pem
+  #         chmod 600 mykey.pem
+  #         cat mykey.pem 
+  #         ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.49.41.50 "docker pull 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}"
+  #         # ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.49.41.50 "docker rm -f mediplux"
+  #         ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@13.49.41.50 "docker run -d --name mediplux -p 80:80 814724283180.dkr.ecr.eu-north-1.amazonaws.com/mediplus:${{github.run_number}}"
     
         
